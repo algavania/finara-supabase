@@ -1,0 +1,18 @@
+# Supabase Local CLI
+.supabase/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Node modules (e.g. for edge functions)
+node_modules/
+
+# VS Code and IDEs
+.vscode/
+.idea/
+*.sw?
+
+# macOS
+.DS_Store
