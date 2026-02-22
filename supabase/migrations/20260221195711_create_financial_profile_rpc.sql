@@ -1,3 +1,5 @@
+DROP FUNCTION IF EXISTS get_user_financial_profile(UUID);
+
 CREATE OR REPLACE FUNCTION get_user_financial_profile(p_user_id UUID)
 RETURNS JSONB
 LANGUAGE plpgsql

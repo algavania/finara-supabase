@@ -1,3 +1,5 @@
+ALTER TABLE profiles DROP COLUMN IF EXISTS risk_tolerance;
+
 ALTER TABLE profiles 
 ADD COLUMN risk_tolerance TEXT 
   CHECK (risk_tolerance IN ('low', 'medium', 'high')) 
