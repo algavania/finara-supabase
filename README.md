@@ -1,134 +1,150 @@
 <p align="center">
-  <h1 align="center">🗄️ Finara Supabase</h1>
-  <p align="center"><strong>Database, Authentication & Backend-as-a-Service for Finara</strong></p>
+ <h1 align="center"> Finara Supabase</h1>
+ <p align="center"><strong>Database, Authentication & Backend-as-a-Service for Finara</strong></p>
 </p>
 
 ---
 
-## 📖 About Finara
+## About Finara
 
-**Finara** (_Financial Narrative_) is an explainable, probabilistic financial decision-support system built for students and young professionals. It integrates intelligent expense tracking with risk-aware debt optimization under cashflow uncertainty.
+**Finara** is short form of Financial Risk Awareness. It is an explainable, probabilistic financial decision-support system built for students and young professionals. It integrates intelligent expense tracking with risk-aware debt optimization under cashflow uncertainty.
 
-### ✨ Key Features
+### Quick Links & Demo
 
-- **🎯 Explainable Risk Assessment** — AI-powered default probability with SHAP value explanations
-- **📄 Smart Document Parsing** — Gemini 2.5 Flash extracts transactions from receipts & statements
-- **⚡ Debt Optimization** — AHP-weighted ranking with Monte Carlo cashflow simulation
-- **📊 Budget Management** — Category-based budgeting with alerts and analytics
-- **💰 Expense Tracking** — Manual and automated transaction tracking with recurring support
-- **🎯 Financial Goals** — Track savings goals with progress monitoring
-- **🔐 Row Level Security** — Complete data isolation per user
+- **Live Web App:** [https://finara-web.vercel.app](https://finara-web.vercel.app)
+- **Demo Accounts:**
+ 1. `budisantoso@gmail.com`
+ 2. `dewikartika@gmail.com`
+ *(Password for both: `password`)*
+- **PDF Report:** [View Report](https://github.com/algavania/finara-web/blob/main/assets/BorNEO%20HackWknd%202026.pdf)
+- **Pitch Video:** [Watch on YouTube](https://youtu.be/Tc2hFalLVC4)
+
+### Repositories
+
+- [finara-ml](https://github.com/algavania/finara-ml)
+- [finara-web](https://github.com/algavania/finara-web)
+- [finara-supabase](https://github.com/algavania/finara-supabase)
+
+### Key Features
+
+- ** Explainable Risk Assessment** — AI-powered default probability with SHAP value explanations
+- ** Smart Document Parsing** — Gemini 2.5 Flash extracts transactions from receipts & statements
+- ** Debt Optimization** — AHP-weighted ranking with Monte Carlo cashflow simulation
+- ** Budget Management** — Category-based budgeting with alerts and analytics
+- ** Expense Tracking** — Manual and automated transaction tracking with recurring support
+- ** Financial Goals** — Track savings goals with progress monitoring
+- ** Row Level Security** — Complete data isolation per user
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 This is the **Backend/Database** component of the Finara ecosystem:
 
 ```
 finara/
-├── finara-ml/          # Python/FastAPI — ML Engine
-├── finara-supabase/    ← You are here (Supabase/PostgreSQL)
-└── finara-web/         # Next.js Frontend
+ finara-ml/     # Python/FastAPI — ML Engine
+ finara-supabase/  ← You are here (Supabase/PostgreSQL)
+ finara-web/     # Next.js Frontend
 ```
 
 Provides the data layer consumed by `finara-web` via Supabase client SDK, and optionally proxies ML requests through Edge Functions.
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 finara-supabase/
-├── supabase/
-│   ├── config.toml                                       # Supabase local config
-│   ├── seed.sql                                          # Default categories (18 entries)
-│   └── migrations/
-│       ├── 20260216101734_create_profiles_table.sql
-│       ├── 20260216101743_create_categories_table.sql
-│       ├── 20260216101754_create_transactions_table.sql
-│       ├── 20260216101809_create_budgets_table.sql
-│       ├── 20260216101822_create_debts_table.sql
-│       ├── 20260216101836_create_debt_payments_table.sql
-│       ├── 20260216101847_create_optimization_results_table.sql
-│       ├── 20260216101901_create_email_transactions_table.sql
-│       ├── 20260216101913_create_gmail_tokens_table.sql
-│       ├── 20260216101924_enable_rls_and_policies.sql
-│       ├── 20260216101941_create_indexes.sql
-│       ├── 20260216101953_create_functions_and_triggers.sql
-│       ├── 20260221195647_add_expense_tracker_tables.sql
-│       ├── 20260221195659_add_risk_tolerance_to_profiles.sql
-│       ├── 20260221195711_create_financial_profile_rpc.sql
-│       ├── 20260221203057_process_recurring_transactions.sql
-│       ├── 20260222055822_process_debt_payments.sql
-│       ├── 20260222055934_insights_rpcs.sql
-│       ├── 20260222085340_add_import_history.sql
-│       ├── 20260225093400_fix_financial_profile_rpc.sql
-│       ├── 20260225094859_fix_debt_payment_triggers.sql
-│       ├── 20260225095709_create_debt_overdue_system.sql
-│       └── 20260313000000_add_tags_to_transactions.sql
-├── personas.md                                           # Test user personas documentation
-├── personas_seed.sql                                     # SQL seed for test user data
-└── .gitignore
+ supabase/
+  config.toml                    # Supabase local config
+  seed.sql                     # Default categories (18 entries)
+  migrations/
+    20260216101734_create_profiles_table.sql
+    20260216101743_create_categories_table.sql
+    20260216101754_create_transactions_table.sql
+    20260216101809_create_budgets_table.sql
+    20260216101822_create_debts_table.sql
+    20260216101836_create_debt_payments_table.sql
+    20260216101847_create_optimization_results_table.sql
+    20260216101901_create_email_transactions_table.sql
+    20260216101913_create_gmail_tokens_table.sql
+    20260216101924_enable_rls_and_policies.sql
+    20260216101941_create_indexes.sql
+    20260216101953_create_functions_and_triggers.sql
+    20260221195647_add_expense_tracker_tables.sql
+    20260221195659_add_risk_tolerance_to_profiles.sql
+    20260221195711_create_financial_profile_rpc.sql
+    20260221203057_process_recurring_transactions.sql
+    20260222055822_process_debt_payments.sql
+    20260222055934_insights_rpcs.sql
+    20260222085340_add_import_history.sql
+    20260225093400_fix_financial_profile_rpc.sql
+    20260225094859_fix_debt_payment_triggers.sql
+    20260225095709_create_debt_overdue_system.sql
+    20260313000000_add_tags_to_transactions.sql
+ personas.md                      # Test user personas documentation
+ personas_seed.sql                   # SQL seed for test user data
+ .gitignore
 ```
 
 ---
 
-## 🗃️ Database Schema
+## Database Schema
 
 The PostgreSQL database contains the following core tables:
 
 ```mermaid
 erDiagram
-    profiles ||--o{ transactions : "has"
-    profiles ||--o{ budgets : "has"
-    profiles ||--o{ debts : "has"
-    profiles ||--o{ categories : "custom"
-    debts ||--o{ debt_payments : "receives"
-    profiles ||--o{ optimization_results : "generates"
-    profiles ||--o{ email_transactions : "imports"
+  profiles ||--o{ transactions : "has"
+  profiles ||--o{ budgets : "has"
+  profiles ||--o{ debts : "has"
+  profiles ||--o{ categories : "custom"
+  debts ||--o{ debt_payments : "receives"
+  profiles ||--o{ optimization_results : "generates"
+  profiles ||--o{ email_transactions : "imports"
 
-    profiles {
-        uuid id PK
-        text full_name
-        float risk_tolerance
-    }
-    transactions {
-        uuid id PK
-        uuid user_id FK
-        float amount
-        text type
-        uuid category_id FK
-        date date
-    }
-    debts {
-        uuid id PK
-        uuid user_id FK
-        text name
-        text creditor
-        float balance
-        float interest_rate
-        float minimum_payment
-        date due_date
-        float penalty_rate
-        int stress_level
-    }
-    budgets {
-        uuid id PK
-        uuid user_id FK
-        uuid category_id FK
-        float amount
-        text period
-    }
-    categories {
-        uuid id PK
-        uuid user_id FK
-        text name
-        text icon
-        text color
-        bool is_default
-        text type
-    }
+  profiles {
+    uuid id PK
+    text full_name
+    float risk_tolerance
+  }
+  transactions {
+    uuid id PK
+    uuid user_id FK
+    float amount
+    text type
+    uuid category_id FK
+    date date
+  }
+  debts {
+    uuid id PK
+    uuid user_id FK
+    text name
+    text creditor
+    float balance
+    float interest_rate
+    float minimum_payment
+    date due_date
+    float penalty_rate
+    int stress_level
+  }
+  budgets {
+    uuid id PK
+    uuid user_id FK
+    uuid category_id FK
+    float amount
+    text period
+  }
+  categories {
+    uuid id PK
+    uuid user_id FK
+    text name
+    text icon
+    text color
+    bool is_default
+    text type
+  }
 ```
 
 ### Key Database Features
@@ -146,7 +162,7 @@ erDiagram
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Technology | Purpose |
 |---|---|
@@ -159,7 +175,7 @@ erDiagram
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -184,8 +200,8 @@ supabase start
 This will output your local credentials:
 
 ```
-API URL:   http://127.0.0.1:54321
-anon key:  eyJhbGciOi...
+API URL:  http://127.0.0.1:54321
+anon key: eyJhbGciOi...
 service_role key: eyJhbGciOi...
 Studio URL: http://127.0.0.1:54323
 ```
@@ -231,15 +247,15 @@ supabase stop
 
 ---
 
-## 🔗 Integration with Other Finara Services
+## Integration with Other Finara Services
 
-### ↔️ Integration with `finara-web`
+### Integration with `finara-web`
 
 The frontend connects to Supabase using the `@supabase/ssr` client SDK. Configure the following in `finara-web/.env`:
 
 ```env
-NEXT_PUBLIC_SUPABASE_URL=http://127.0.0.1:54321   # Local Supabase API URL
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key        # From 'supabase start' output
+NEXT_PUBLIC_SUPABASE_URL=http://127.0.0.1:54321  # Local Supabase API URL
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key    # From 'supabase start' output
 ```
 
 The web app uses Supabase for:
@@ -248,7 +264,7 @@ The web app uses Supabase for:
 - **RPC calls** — `create_financial_profile`, `process_recurring_transactions`, `process_debt_payments`
 - **Real-time** — Optional real-time subscriptions for data updates
 
-### ↔️ Integration with `finara-ml`
+### Integration with `finara-ml`
 
 The ML engine doesn't directly connect to Supabase. Instead:
 1. `finara-web` fetches user data from Supabase
@@ -271,7 +287,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=<your-cloud-anon-key>
 
 ---
 
-## 🧪 Test Data
+## Test Data
 
 The repository includes test data for demo purposes:
 
@@ -288,5 +304,5 @@ psql <database-url> -f personas_seed.sql
 ---
 
 <p align="center">
-  Built with 🗄️ PostgreSQL + 🔐 Row Level Security + ⚡ Edge Functions
+ Built with PostgreSQL + Row Level Security + Edge Functions
 </p>
