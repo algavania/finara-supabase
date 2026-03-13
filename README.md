@@ -27,13 +27,13 @@
 
 ### Key Features
 
-- ** Explainable Risk Assessment** — AI-powered default probability with SHAP value explanations
-- ** Smart Document Parsing** — Gemini 2.5 Flash extracts transactions from receipts & statements
-- ** Debt Optimization** — AHP-weighted ranking with Monte Carlo cashflow simulation
-- ** Budget Management** — Category-based budgeting with alerts and analytics
-- ** Expense Tracking** — Manual and automated transaction tracking with recurring support
-- ** Financial Goals** — Track savings goals with progress monitoring
-- ** Row Level Security** — Complete data isolation per user
+- **Explainable Risk Assessment** — AI-powered default probability with SHAP value explanations
+- **Smart Document Parsing** — Gemini 2.5 Flash extracts transactions from receipts & statements
+- **Debt Optimization** — AHP-weighted ranking with Monte Carlo cashflow simulation
+- **Budget Management** — Category-based budgeting with alerts and analytics
+- **Expense Tracking** — Manual and automated transaction tracking with recurring support
+- **Financial Goals** — Track savings goals with progress monitoring
+- **Row Level Security** — Complete data isolation per user
 
 ---
 
